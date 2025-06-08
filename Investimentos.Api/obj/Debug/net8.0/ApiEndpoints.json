@@ -1,0 +1,18 @@
+[
+  {
+    "ContainingType": "Investimentos.Api.Controllers.OperacaoController",
+    "Method": "GetOperacoes",
+    "RelativePath": "api/Operacao/{usuarioId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuarioId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

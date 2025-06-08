@@ -1,0 +1,17 @@
+C:\Users\barbo\OneDrive\Área de Trabalho\Levi\Itau\Investimentos.Infra\bin\Debug\net8.0\Investimentos.Infra.deps.json
+C:\Users\barbo\OneDrive\Área de Trabalho\Levi\Itau\Investimentos.Infra\bin\Debug\net8.0\Investimentos.Infra.runtimeconfig.json
+C:\Users\barbo\OneDrive\Área de Trabalho\Levi\Itau\Investimentos.Infra\bin\Debug\net8.0\Investimentos.Infra.dll
+C:\Users\barbo\OneDrive\Área de Trabalho\Levi\Itau\Investimentos.Infra\bin\Debug\net8.0\Investimentos.Infra.pdb
+C:\Users\barbo\OneDrive\Área de Trabalho\Levi\Itau\Investimentos.Infra\bin\Debug\net8.0\Investimentos.Domain.dll
+C:\Users\barbo\OneDrive\Área de Trabalho\Levi\Itau\Investimentos.Infra\bin\Debug\net8.0\Investimentos.Domain.pdb
+C:\Users\barbo\OneDrive\Área de Trabalho\Levi\Itau\Investimentos.Infra\obj\Debug\net8.0\Investimentos.Infra.csproj.AssemblyReference.cache
+C:\Users\barbo\OneDrive\Área de Trabalho\Levi\Itau\Investimentos.Infra\obj\Debug\net8.0\Investimentos.Infra.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\barbo\OneDrive\Área de Trabalho\Levi\Itau\Investimentos.Infra\obj\Debug\net8.0\Investimentos.Infra.AssemblyInfoInputs.cache
+C:\Users\barbo\OneDrive\Área de Trabalho\Levi\Itau\Investimentos.Infra\obj\Debug\net8.0\Investimentos.Infra.AssemblyInfo.cs
+C:\Users\barbo\OneDrive\Área de Trabalho\Levi\Itau\Investimentos.Infra\obj\Debug\net8.0\Investimentos.Infra.csproj.CoreCompileInputs.cache
+C:\Users\barbo\OneDrive\Área de Trabalho\Levi\Itau\Investimentos.Infra\obj\Debug\net8.0\Investim.DEB217F3.Up2Date
+C:\Users\barbo\OneDrive\Área de Trabalho\Levi\Itau\Investimentos.Infra\obj\Debug\net8.0\Investimentos.Infra.dll
+C:\Users\barbo\OneDrive\Área de Trabalho\Levi\Itau\Investimentos.Infra\obj\Debug\net8.0\refint\Investimentos.Infra.dll
+C:\Users\barbo\OneDrive\Área de Trabalho\Levi\Itau\Investimentos.Infra\obj\Debug\net8.0\Investimentos.Infra.pdb
+C:\Users\barbo\OneDrive\Área de Trabalho\Levi\Itau\Investimentos.Infra\obj\Debug\net8.0\Investimentos.Infra.genruntimeconfig.cache
+C:\Users\barbo\OneDrive\Área de Trabalho\Levi\Itau\Investimentos.Infra\obj\Debug\net8.0\ref\Investimentos.Infra.dll
