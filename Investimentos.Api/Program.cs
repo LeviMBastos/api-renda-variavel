@@ -21,20 +21,7 @@ builder.Services.AddScoped<IOperacaoRepository, OperacaoRepository>();
 builder.Services.AddScoped<IOperacaoService, OperacaoService>();
 
 // Controllers + Swagger
-builder.Services.AddControllers().AddJsonOptions(options =>
-{
-    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
-    options.JsonSerializerOptions.MaxDepth = 64;
-});
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAllOrigins", builder =>
-    {
-        builder.AllowAnyOrigin()
-               .AllowAnyMethod()
-               .AllowAnyHeader();
-    });
-});
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer(); // Para Swagger funcionar corretamente
 builder.Services.AddSwaggerGen(c =>
 {

@@ -16,7 +16,7 @@ namespace Investimentos.Infra.Repositories
         public async Task<List<Operacao>> ObterPorUsuarioAsync(int usuarioId)
         {
             return await _context.Operacoes
-                .Include(o => o.Ativo)
+                .Include(o => o.Ativo).Include(o => o.Usuario)
                 .Where(o => o.UsuarioId == usuarioId)
                 .OrderByDescending(o => o.DataHora)
                 .ToListAsync();

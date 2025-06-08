@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\barbo\\OneDrive\\Área de Trabalho\\Levi\\Itau\\Investimentos.Api\\Investimentos.Api.csproj": {}
+    "C:\\Users\\levim\\OneDrive\\Área de Trabalho\\Itau\\api-renda-variavel\\Investimentos.Api\\Investimentos.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\barbo\\OneDrive\\Área de Trabalho\\Levi\\Itau\\Investimentos.Api\\Investimentos.Api.csproj": {
+    "C:\\Users\\levim\\OneDrive\\Área de Trabalho\\Itau\\api-renda-variavel\\Investimentos.Api\\Investimentos.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\barbo\\OneDrive\\Área de Trabalho\\Levi\\Itau\\Investimentos.Api\\Investimentos.Api.csproj",
+        "projectUniqueName": "C:\\Users\\levim\\OneDrive\\Área de Trabalho\\Itau\\api-renda-variavel\\Investimentos.Api\\Investimentos.Api.csproj",
         "projectName": "Investimentos.Api",
-        "projectPath": "C:\\Users\\barbo\\OneDrive\\Área de Trabalho\\Levi\\Itau\\Investimentos.Api\\Investimentos.Api.csproj",
-        "packagesPath": "C:\\Users\\barbo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\barbo\\OneDrive\\Área de Trabalho\\Levi\\Itau\\Investimentos.Api\\obj\\",
+        "projectPath": "C:\\Users\\levim\\OneDrive\\Área de Trabalho\\Itau\\api-renda-variavel\\Investimentos.Api\\Investimentos.Api.csproj",
+        "packagesPath": "C:\\Users\\levim\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\levim\\OneDrive\\Área de Trabalho\\Itau\\api-renda-variavel\\Investimentos.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\barbo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\levim\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -32,11 +32,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\barbo\\OneDrive\\Área de Trabalho\\Levi\\Itau\\Investimentos.Domain\\Investimentos.Domain.csproj": {
-                "projectPath": "C:\\Users\\barbo\\OneDrive\\Área de Trabalho\\Levi\\Itau\\Investimentos.Domain\\Investimentos.Domain.csproj"
+              "C:\\Users\\levim\\OneDrive\\Área de Trabalho\\Itau\\api-renda-variavel\\Investimentos.Domain\\Investimentos.Domain.csproj": {
+                "projectPath": "C:\\Users\\levim\\OneDrive\\Área de Trabalho\\Itau\\api-renda-variavel\\Investimentos.Domain\\Investimentos.Domain.csproj"
               },
-              "C:\\Users\\barbo\\OneDrive\\Área de Trabalho\\Levi\\Itau\\Investimentos.Infra\\Investimentos.Infra.csproj": {
-                "projectPath": "C:\\Users\\barbo\\OneDrive\\Área de Trabalho\\Levi\\Itau\\Investimentos.Infra\\Investimentos.Infra.csproj"
+              "C:\\Users\\levim\\OneDrive\\Área de Trabalho\\Itau\\api-renda-variavel\\Investimentos.Infra\\Investimentos.Infra.csproj": {
+                "projectPath": "C:\\Users\\levim\\OneDrive\\Área de Trabalho\\Itau\\api-renda-variavel\\Investimentos.Infra\\Investimentos.Infra.csproj"
               }
             }
           }
@@ -95,20 +95,20 @@
         }
       }
     },
-    "C:\\Users\\barbo\\OneDrive\\Área de Trabalho\\Levi\\Itau\\Investimentos.Domain\\Investimentos.Domain.csproj": {
+    "C:\\Users\\levim\\OneDrive\\Área de Trabalho\\Itau\\api-renda-variavel\\Investimentos.Domain\\Investimentos.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\barbo\\OneDrive\\Área de Trabalho\\Levi\\Itau\\Investimentos.Domain\\Investimentos.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\levim\\OneDrive\\Área de Trabalho\\Itau\\api-renda-variavel\\Investimentos.Domain\\Investimentos.Domain.csproj",
         "projectName": "Investimentos.Domain",
-        "projectPath": "C:\\Users\\barbo\\OneDrive\\Área de Trabalho\\Levi\\Itau\\Investimentos.Domain\\Investimentos.Domain.csproj",
-        "packagesPath": "C:\\Users\\barbo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\barbo\\OneDrive\\Área de Trabalho\\Levi\\Itau\\Investimentos.Domain\\obj\\",
+        "projectPath": "C:\\Users\\levim\\OneDrive\\Área de Trabalho\\Itau\\api-renda-variavel\\Investimentos.Domain\\Investimentos.Domain.csproj",
+        "packagesPath": "C:\\Users\\levim\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\levim\\OneDrive\\Área de Trabalho\\Itau\\api-renda-variavel\\Investimentos.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\barbo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\levim\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -160,20 +160,20 @@
         }
       }
     },
-    "C:\\Users\\barbo\\OneDrive\\Área de Trabalho\\Levi\\Itau\\Investimentos.Infra\\Investimentos.Infra.csproj": {
+    "C:\\Users\\levim\\OneDrive\\Área de Trabalho\\Itau\\api-renda-variavel\\Investimentos.Infra\\Investimentos.Infra.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\barbo\\OneDrive\\Área de Trabalho\\Levi\\Itau\\Investimentos.Infra\\Investimentos.Infra.csproj",
+        "projectUniqueName": "C:\\Users\\levim\\OneDrive\\Área de Trabalho\\Itau\\api-renda-variavel\\Investimentos.Infra\\Investimentos.Infra.csproj",
         "projectName": "Investimentos.Infra",
-        "projectPath": "C:\\Users\\barbo\\OneDrive\\Área de Trabalho\\Levi\\Itau\\Investimentos.Infra\\Investimentos.Infra.csproj",
-        "packagesPath": "C:\\Users\\barbo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\barbo\\OneDrive\\Área de Trabalho\\Levi\\Itau\\Investimentos.Infra\\obj\\",
+        "projectPath": "C:\\Users\\levim\\OneDrive\\Área de Trabalho\\Itau\\api-renda-variavel\\Investimentos.Infra\\Investimentos.Infra.csproj",
+        "packagesPath": "C:\\Users\\levim\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\levim\\OneDrive\\Área de Trabalho\\Itau\\api-renda-variavel\\Investimentos.Infra\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\barbo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\levim\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -188,8 +188,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\barbo\\OneDrive\\Área de Trabalho\\Levi\\Itau\\Investimentos.Domain\\Investimentos.Domain.csproj": {
-                "projectPath": "C:\\Users\\barbo\\OneDrive\\Área de Trabalho\\Levi\\Itau\\Investimentos.Domain\\Investimentos.Domain.csproj"
+              "C:\\Users\\levim\\OneDrive\\Área de Trabalho\\Itau\\api-renda-variavel\\Investimentos.Domain\\Investimentos.Domain.csproj": {
+                "projectPath": "C:\\Users\\levim\\OneDrive\\Área de Trabalho\\Itau\\api-renda-variavel\\Investimentos.Domain\\Investimentos.Domain.csproj"
               }
             }
           }

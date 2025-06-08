@@ -9,3 +9,15 @@ C:\Users\barbo\OneDrive\Área de Trabalho\Levi\Itau\Investimentos.Domain\obj\Deb
 C:\Users\barbo\OneDrive\Área de Trabalho\Levi\Itau\Investimentos.Domain\obj\Debug\net8.0\refint\Investimentos.Domain.dll
 C:\Users\barbo\OneDrive\Área de Trabalho\Levi\Itau\Investimentos.Domain\obj\Debug\net8.0\Investimentos.Domain.pdb
 C:\Users\barbo\OneDrive\Área de Trabalho\Levi\Itau\Investimentos.Domain\obj\Debug\net8.0\ref\Investimentos.Domain.dll
+C:\Users\levim\OneDrive\Área de Trabalho\Itau\api-renda-variavel\Investimentos.Domain\bin\Debug\net8.0\Investimentos.Domain.deps.json
+C:\Users\levim\OneDrive\Área de Trabalho\Itau\api-renda-variavel\Investimentos.Domain\bin\Debug\net8.0\Investimentos.Domain.dll
+C:\Users\levim\OneDrive\Área de Trabalho\Itau\api-renda-variavel\Investimentos.Domain\bin\Debug\net8.0\Investimentos.Domain.pdb
+C:\Users\levim\OneDrive\Área de Trabalho\Itau\api-renda-variavel\Investimentos.Domain\obj\Debug\net8.0\Investimentos.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\levim\OneDrive\Área de Trabalho\Itau\api-renda-variavel\Investimentos.Domain\obj\Debug\net8.0\Investimentos.Domain.AssemblyInfoInputs.cache
+C:\Users\levim\OneDrive\Área de Trabalho\Itau\api-renda-variavel\Investimentos.Domain\obj\Debug\net8.0\Investimentos.Domain.AssemblyInfo.cs
+C:\Users\levim\OneDrive\Área de Trabalho\Itau\api-renda-variavel\Investimentos.Domain\obj\Debug\net8.0\Investimentos.Domain.csproj.CoreCompileInputs.cache
+C:\Users\levim\OneDrive\Área de Trabalho\Itau\api-renda-variavel\Investimentos.Domain\obj\Debug\net8.0\Investimentos.Domain.sourcelink.json
+C:\Users\levim\OneDrive\Área de Trabalho\Itau\api-renda-variavel\Investimentos.Domain\obj\Debug\net8.0\Investimentos.Domain.dll
+C:\Users\levim\OneDrive\Área de Trabalho\Itau\api-renda-variavel\Investimentos.Domain\obj\Debug\net8.0\refint\Investimentos.Domain.dll
+C:\Users\levim\OneDrive\Área de Trabalho\Itau\api-renda-variavel\Investimentos.Domain\obj\Debug\net8.0\Investimentos.Domain.pdb
+C:\Users\levim\OneDrive\Área de Trabalho\Itau\api-renda-variavel\Investimentos.Domain\obj\Debug\net8.0\ref\Investimentos.Domain.dll

@@ -1,9 +1,9 @@
-﻿using Investimentos.Domain.Entities;
+﻿using Investimentos.Domain.DTOs;
 
 namespace Investimentos.Domain.Services
 {
     public interface IOperacaoService
     {
-        Task<List<Operacao>> ObterOperacoesUsuarioAsync(int usuarioId);
+        Task<UsuarioDto> ObterOperacoesUsuarioAsync(int usuarioId);
     }
 }
