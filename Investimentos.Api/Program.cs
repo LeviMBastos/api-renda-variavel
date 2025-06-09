@@ -10,19 +10,26 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Conexão com o banco
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<InvestimentosDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
 );
 
-// Serviços
+builder.Services.AddScoped<IAtivoRepository, AtivoRepository>();
+builder.Services.AddScoped<ICotacaoRepository, CotacaoRepository>();
 builder.Services.AddScoped<IOperacaoRepository, OperacaoRepository>();
-builder.Services.AddScoped<IOperacaoService, OperacaoService>();
+builder.Services.AddScoped<IPosicaoRepository, PosicaoRepository>();
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-// Controllers + Swagger
+builder.Services.AddScoped<IAtivoService, AtivoService>();
+builder.Services.AddScoped<ICotacaoService, CotacaoService>();
+builder.Services.AddScoped<IOperacaoService, OperacaoService>();
+builder.Services.AddScoped<IPosicaoService, PosicaoService>();
+builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+
 builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer(); // Para Swagger funcionar corretamente
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Investimentos API", Version = "v1" });
@@ -41,6 +48,6 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAuthorization();
 
-app.MapControllers(); // Aqui mapeia suas rotas de controllers
+app.MapControllers();
 
 app.Run();

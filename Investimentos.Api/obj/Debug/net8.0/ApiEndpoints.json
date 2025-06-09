@@ -1,5 +1,42 @@
 [
   {
+    "ContainingType": "Investimentos.Api.Controllers.InvestimentosController",
+    "Method": "ComprarAtivo",
+    "RelativePath": "api/Investimentos/comprar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "operacaoCompra",
+        "Type": "Investimentos.Domain.DTOs.OperacaoCompraDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Investimentos.Api.Controllers.InvestimentosController",
+    "Method": "GetPrecoMedio",
+    "RelativePath": "api/Investimentos/preco-medio",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuarioId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "ativoId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Investimentos.Api.Controllers.OperacaoController",
     "Method": "GetOperacoes",
     "RelativePath": "api/Operacao/{usuarioId}",

@@ -1,4 +1,6 @@
-﻿using Investimentos.Domain.Interfaces;
+﻿using Investimentos.Domain.Entities;
+using Investimentos.Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Investimentos.Infra.Repositories
 {
@@ -10,6 +12,16 @@ namespace Investimentos.Infra.Repositories
         {
             _context = context;
         }
-        
+
+        public async Task<Ativo?> BuscarPorCodigoAsync(string codigo)
+        {
+            return await _context.Ativos
+                .FirstOrDefaultAsync(a => a.Codigo == codigo);
+        }
+
+        public async Task AdicionarAsync(Ativo ativo)
+        {
+            await _context.Ativos.AddAsync(ativo);
+        }
     }
 }

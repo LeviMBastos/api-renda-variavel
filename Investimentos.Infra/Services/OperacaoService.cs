@@ -54,7 +54,9 @@ namespace Investimentos.Infra.Services
 
         public async Task RealizarCompraAsync(OperacaoCompraDto operacaoCompra)
         {
-            if(_usuarioRepository.ObterPorIdAsync(operacaoCompra.UsuarioId) == null)
+            Usuario? usuario = await _usuarioRepository.ObterPorIdAsync(operacaoCompra.UsuarioId);
+
+            if (usuario == null)
                 throw new ArgumentException("Usuário não encontrado.");
 
             var operacao = new Operacao
