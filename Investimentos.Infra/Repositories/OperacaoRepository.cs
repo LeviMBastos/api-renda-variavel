@@ -21,5 +21,23 @@ namespace Investimentos.Infra.Repositories
                 .OrderByDescending(o => o.DataHora)
                 .ToListAsync();
         }
+
+        public async Task<List<Operacao>?> GetOperacoesDeCompraAsync(int usuarioId, int ativoId)
+        {
+            List<Operacao>? operacoesDeCompra = await _context.Operacoes
+                                                             .Where(o => o.UsuarioId == usuarioId &&
+                                                                         o.AtivoId == ativoId &&
+                                                                         o.TipoOperacao == "COMPRA")
+                                                             .OrderBy(o => o.DataHora)
+                                                             .ToListAsync();
+
+            return operacoesDeCompra;
+        }
+
+        public async Task AddAsync(Operacao operacao)
+        {
+            _context.Operacoes.Add(operacao);
+            await _context.SaveChangesAsync();
+        }
     }
 }

@@ -2,23 +2,80 @@
 using Investimentos.Domain.Entities;
 using Investimentos.Domain.Interfaces;
 using Investimentos.Domain.Services;
+using Investimentos.Infra.Repositories;
 
 namespace Investimentos.Infra.Services
 {
     public class OperacaoService : IOperacaoService
     {
-        private readonly IOperacaoRepository _repo;
+        private readonly IOperacaoRepository _operacaoRepository;
+        private readonly IUsuarioRepository _usuarioRepository;
+        private readonly IPosicaoService _posicaoService;
 
-        public OperacaoService(IOperacaoRepository repo)
+        public OperacaoService(IOperacaoRepository operacaoRepository, 
+                               IUsuarioRepository usuarioRepository, 
+                               
+                               IPosicaoService posicaoService)
         {
-            _repo = repo;
+            _operacaoRepository = operacaoRepository;
+            _usuarioRepository = usuarioRepository;
+
+            _posicaoService = posicaoService;
         }
 
         public async Task<UsuarioDto> ObterOperacoesUsuarioAsync(int usuarioId)
         {
-            List<Operacao> operacoesUsuario = await _repo.ObterPorUsuarioAsync(usuarioId);
+            List<Operacao> operacoesUsuario = await _operacaoRepository.ObterPorUsuarioAsync(usuarioId);
 
             return Map(operacoesUsuario);
+        }
+
+        public async Task<decimal> CalcularPrecoMedioAsync(int ativoId, int usuarioId)
+        {
+            List<Operacao>? compras = await _operacaoRepository.GetOperacoesDeCompraAsync(usuarioId, ativoId);
+
+            if (compras == null || !compras.Any())
+                throw new ArgumentException("Não há compras para o ativo especificado.");
+
+            decimal totalInvestido = 0;
+            int totalQuantidade = 0;
+
+            foreach (Operacao compra in compras)
+            {
+                totalInvestido += compra.PrecoUnitario * compra.Quantidade;
+                totalQuantidade += compra.Quantidade;
+            }
+
+            if (totalQuantidade == 0)
+                return 0;
+
+            return totalInvestido / totalQuantidade;
+        }
+
+        public async Task RealizarCompraAsync(OperacaoCompraDto operacaoCompra)
+        {
+            if(_usuarioRepository.ObterPorIdAsync(operacaoCompra.UsuarioId) == null)
+                throw new ArgumentException("Usuário não encontrado.");
+
+            var operacao = new Operacao
+            {
+                UsuarioId = operacaoCompra.UsuarioId,
+                AtivoId = operacaoCompra.AtivoId,
+                Quantidade = operacaoCompra.Quantidade,
+                PrecoUnitario = operacaoCompra.PrecoUnitario,
+                TipoOperacao = "COMPRA",
+                Corretagem = operacaoCompra.Corretagem,
+                DataHora = DateTime.Now
+            };
+
+            await _operacaoRepository.AddAsync(operacao);
+
+            await _posicaoService.AtualizarPosicaoAposCompraAsync(
+                operacaoCompra.UsuarioId,
+                operacaoCompra.AtivoId,
+                operacaoCompra.PrecoUnitario,
+                operacaoCompra.Quantidade
+            );
         }
 
         #region Map
@@ -41,7 +98,6 @@ namespace Investimentos.Infra.Services
             result.Email = usuario.Email;
             result.PercentualCorretagem = usuario.PercentualCorretagem;
 
-            // Mapear operações
             result.Operacoes = operacoes.Select(op => new OperacaoDto
             {
                 Id = op.Id,
@@ -66,7 +122,6 @@ namespace Investimentos.Infra.Services
                 }
             }).ToList();
 
-            // Agrupar por ativo para gerar posições
             var ativosAgrupados = operacoes
                 .GroupBy(o => o.Ativo.Id);
 
