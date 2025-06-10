@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Investimentos.Domain", "Inv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Investimentos.Infra", "Investimentos.Infra\Investimentos.Infra.csproj", "{7091A8A0-7D3F-42D2-BE23-ED5FA4614021}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Investimentos.Worker", "Investimentos.Worker\Investimentos.Worker.csproj", "{4FF3C5D1-6EAD-4F30-BF39-ADC5B8A1ADE4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Investimentos.WorkerCotacaoConsumer", "Investimentos.Worker\Investimentos.WorkerCotacaoConsumer.csproj", "{4FF3C5D1-6EAD-4F30-BF39-ADC5B8A1ADE4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Investimentos.Tests", "Investimentos.Tests\Investimentos.Tests.csproj", "{088E0A9C-8D5E-4A8A-8C1D-FB7F94825923}"
 EndProject
@@ -18,9 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kafka", "Kafka", "{02EA681E
 		docker-compose.yml = docker-compose.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Investimentos.KafkaProducer", "Investimentos.KafkaProducer\Investimentos.KafkaProducer.csproj", "{56090A39-5C7C-7BEB-7634-3725A49C5ADE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Investimentos.KafkaCotacoesProducer", "Investimentos.KafkaCotacoesProducer\Investimentos.KafkaCotacoesProducer.csproj", "{BA572889-2FCD-5387-D659-4F0D0166963E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Investimentos.WorkerKafkaCotacoesProducer", "Investimentos.KafkaCotacoesProducer\Investimentos.WorkerKafkaCotacoesProducer.csproj", "{BA572889-2FCD-5387-D659-4F0D0166963E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -92,18 +90,6 @@ Global
 		{088E0A9C-8D5E-4A8A-8C1D-FB7F94825923}.Release|x64.Build.0 = Release|Any CPU
 		{088E0A9C-8D5E-4A8A-8C1D-FB7F94825923}.Release|x86.ActiveCfg = Release|Any CPU
 		{088E0A9C-8D5E-4A8A-8C1D-FB7F94825923}.Release|x86.Build.0 = Release|Any CPU
-		{56090A39-5C7C-7BEB-7634-3725A49C5ADE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{56090A39-5C7C-7BEB-7634-3725A49C5ADE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{56090A39-5C7C-7BEB-7634-3725A49C5ADE}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{56090A39-5C7C-7BEB-7634-3725A49C5ADE}.Debug|x64.Build.0 = Debug|Any CPU
-		{56090A39-5C7C-7BEB-7634-3725A49C5ADE}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{56090A39-5C7C-7BEB-7634-3725A49C5ADE}.Debug|x86.Build.0 = Debug|Any CPU
-		{56090A39-5C7C-7BEB-7634-3725A49C5ADE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{56090A39-5C7C-7BEB-7634-3725A49C5ADE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{56090A39-5C7C-7BEB-7634-3725A49C5ADE}.Release|x64.ActiveCfg = Release|Any CPU
-		{56090A39-5C7C-7BEB-7634-3725A49C5ADE}.Release|x64.Build.0 = Release|Any CPU
-		{56090A39-5C7C-7BEB-7634-3725A49C5ADE}.Release|x86.ActiveCfg = Release|Any CPU
-		{56090A39-5C7C-7BEB-7634-3725A49C5ADE}.Release|x86.Build.0 = Release|Any CPU
 		{BA572889-2FCD-5387-D659-4F0D0166963E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BA572889-2FCD-5387-D659-4F0D0166963E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA572889-2FCD-5387-D659-4F0D0166963E}.Debug|x64.ActiveCfg = Debug|Any CPU

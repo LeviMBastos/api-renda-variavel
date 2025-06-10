@@ -1,11 +1,9 @@
 ﻿using Confluent.Kafka;
 using Investimentos.Domain.Services;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
+using Polly;
+using Polly.CircuitBreaker;
+using Polly.Fallback;
+using Polly.Wrap;
 
 namespace Investimentos.Worker
 {
@@ -13,12 +11,40 @@ namespace Investimentos.Worker
     {
         private readonly ILogger<CotacaoConsumerWorker> _logger;
         private readonly IServiceScopeFactory _scopeFactory;
+        private readonly AsyncPolicyWrap _policy;
 
         public CotacaoConsumerWorker(ILogger<CotacaoConsumerWorker> logger, IServiceScopeFactory scopeFactory)
         {
             _logger = logger;
             _scopeFactory = scopeFactory;
+
+            // Fallback para ignorar erros do CotacaoService
+            var fallbackPolicy = Policy
+                .Handle<Exception>()
+                .FallbackAsync(async (ct) =>
+                {
+                    _logger.LogWarning("⚠️ Fallback executado: falha ao processar cotação Kafka.");
+                });
+
+            // Circuit breaker para proteger banco/repositório
+            var circuitBreakerPolicy = Policy
+                .Handle<Exception>()
+                .AdvancedCircuitBreakerAsync(
+                    failureThreshold: 0.5,
+                    samplingDuration: TimeSpan.FromSeconds(30),
+                    minimumThroughput: 2,
+                    durationOfBreak: TimeSpan.FromSeconds(30),
+                    onBreak: (ex, breakDelay) =>
+                    {
+                        _logger.LogWarning("⛔ Circuit breaker aberto por {Seconds}s devido a erro: {Erro}", breakDelay.TotalSeconds, ex.Message);
+                    },
+                    onReset: () => _logger.LogInformation("🔄 Circuit breaker resetado."),
+                    onHalfOpen: () => _logger.LogInformation("⚠️ Circuit breaker em estado half-open.")
+                );
+
+            _policy = Policy.WrapAsync(fallbackPolicy, circuitBreakerPolicy);
         }
+
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
@@ -53,7 +79,10 @@ namespace Investimentos.Worker
                         using var scope = _scopeFactory.CreateScope();
                         var cotacaoService = scope.ServiceProvider.GetRequiredService<ICotacaoService>();
 
-                        await cotacaoService.ProcessarCotacaoKafkaAsync(message);
+                        await _policy.ExecuteAsync(async () =>
+                        {
+                            await cotacaoService.ProcessarCotacaoKafkaAsync(message);
+                        });
 
                         _logger.LogInformation("✅ Cotação processada com sucesso.");
                     }
