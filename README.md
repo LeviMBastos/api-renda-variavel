@@ -16,7 +16,7 @@ Este projeto simula um sistema completo para controle de investimentos em renda 
 
 ### ⚙️ Passos de Execução
 
-1. **Subir o MySQL + Kafka com Docker**
+1. **Subir o Kafka com Docker**
 
 ```bash
 docker-compose up --build
@@ -28,8 +28,6 @@ docker-compose up --build
 cd Investimentos.Api
 dotnet run
 ```
-
-A API será exposta por padrão em `https://localhost:5001` ou `http://localhost:5000`.
 
 3. **Executar o Worker Produtor de Cotações (simula serviço externo)**
 
@@ -49,7 +47,7 @@ dotnet run
 
 ## 🧠 Estrutura Técnica
 
-### 1. 📦 Modelagem de Banco de Dados (MySQL)
+### 📦 Modelagem de Banco de Dados (MySQL)
 
 Script de criação: [`/scripts/criacao_tabelas.sql`](scripts/criacao_tabelas.sql)
 
@@ -108,7 +106,7 @@ public async Task AtualizarPosicaoAsync(int ativoId, decimal novaCotacao)
 
 ---
 
-### 3. 🧮 Lógica de Negócio
+### 🧮 Lógica de Negócio
 
 - **Cálculo do Preço Médio Ponderado** implementado com validações.
 - **Total Investido por Ativo**
@@ -120,7 +118,7 @@ Código disponível em `/Investimentos.Infra/Services`.
 
 ---
 
-### 4. ✅ Testes
+### ✅ Testes
 
 #### Unitários (xUnit):
 - Casos positivos
@@ -141,7 +139,7 @@ Se os testes não falharem com o mutante, eles não estão cobrindo corretamente
 
 ---
 
-### 5. 🔁 Integração Kafka
+### 🔁 Integração Kafka
 
 - **Produtor**: `Investimentos.WorkerKafkaCotacoesProducer`
 - **Consumidor (Worker .NET)**: `Investimentos.WorkerCotacaoConsumer`
@@ -152,7 +150,7 @@ Se os testes não falharem com o mutante, eles não estão cobrindo corretamente
 
 ---
 
-### 6. 🧯 Engenharia do Caos
+### 🧯 Engenharia do Caos
 
 Caso o serviço de cotações falhe:
 - **Circuit Breaker** impede chamadas consecutivas.
@@ -161,7 +159,7 @@ Caso o serviço de cotações falhe:
 
 ---
 
-### 7. 📈 Escalabilidade e Performance
+### 📈 Escalabilidade e Performance
 
 - **Auto-scaling horizontal**: adição de instâncias com containers (Kubernetes, App Services etc.).
 - **Balanceadores**:
@@ -176,15 +174,266 @@ Caso o serviço de cotações falhe:
 ## 📁 Estrutura do Projeto
 
 ```plaintext
-Investimentos.Api/                      --> API principal
-Investimentos.Domain/                   --> Entidades e regras de domínio
-Investimentos.Infra/                    --> Contexto EF Core, repositórios, serviços
+Investimentos.Api/                         --> API principal
+Investimentos.Domain/                      --> Entidades e regras de domínio
+Investimentos.Infra/                       --> Contexto EF Core, repositórios, serviços
 Investimentos.WorkerKafkaCotacoesProducer/ --> Produtor de cotações (Kafka)
 Investimentos.WorkerCotacaoConsumer/       --> Worker consumidor de cotações
-tests/                                  --> Testes unitários
-scripts/criacao_tabelas.sql             --> Script de criação do banco
+Investimentos.Tests/                       --> Testes unitários
+scripts/criacao_tabelas.sql                --> Script de criação do banco
 ```
 
+---
+
+## Documentação da API (OpenAPI 3.0 JSON)
+
+```json
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "Investimentos API",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/Ativo/ObterUltimaCotacao/{codigoAtivo}": {
+      "get": {
+        "tags": [
+          "Ativo"
+        ],
+        "parameters": [
+          {
+            "name": "codigoAtivo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Investimentos/comprar": {
+      "post": {
+        "tags": [
+          "Investimentos"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OperacaoCompraDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OperacaoCompraDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OperacaoCompraDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Investimentos/preco-medio": {
+      "get": {
+        "tags": [
+          "Investimentos"
+        ],
+        "parameters": [
+          {
+            "name": "usuarioId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "ativoId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Operacao/{usuarioId}": {
+      "get": {
+        "tags": [
+          "Operacao"
+        ],
+        "parameters": [
+          {
+            "name": "usuarioId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Operacao/getTotalCorretagens": {
+      "get": {
+        "tags": [
+          "Operacao"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Operacao/getTop10ClientesPorCorretagemAsync": {
+      "get": {
+        "tags": [
+          "Operacao"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Posicao/getTop10ClientesPorPl": {
+      "get": {
+        "tags": [
+          "Posicao"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Usuario": {
+      "post": {
+        "tags": [
+          "Usuario"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsuarioCriacaoDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsuarioCriacaoDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsuarioCriacaoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Usuario/{id}": {
+      "get": {
+        "tags": [
+          "Usuario"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "OperacaoCompraDto": {
+        "type": "object",
+        "properties": {
+          "usuarioId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "codigoAtivo": {
+            "type": "string",
+            "nullable": true
+          },
+          "quantidade": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UsuarioCriacaoDto": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "percentualCorretagem": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
+```
 ---
 
 ## 📌 Considerações Finais
