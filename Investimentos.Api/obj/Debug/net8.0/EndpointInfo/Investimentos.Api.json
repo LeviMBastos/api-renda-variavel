@@ -5,6 +5,28 @@
     "version": "v1"
   },
   "paths": {
+    "/api/Ativo/ObterUltimaCotacao/{codigoAtivo}": {
+      "get": {
+        "tags": [
+          "Ativo"
+        ],
+        "parameters": [
+          {
+            "name": "codigoAtivo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Investimentos/comprar": {
       "post": {
         "tags": [
@@ -88,6 +110,96 @@
           }
         }
       }
+    },
+    "/api/Operacao/getTotalCorretagens": {
+      "get": {
+        "tags": [
+          "Operacao"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Operacao/getTop10ClientesPorCorretagemAsync": {
+      "get": {
+        "tags": [
+          "Operacao"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Posicao/getTop10ClientesPorPl": {
+      "get": {
+        "tags": [
+          "Posicao"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Usuario": {
+      "post": {
+        "tags": [
+          "Usuario"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsuarioCriacaoDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsuarioCriacaoDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsuarioCriacaoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Usuario/{id}": {
+      "get": {
+        "tags": [
+          "Usuario"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -99,19 +211,29 @@
             "type": "integer",
             "format": "int32"
           },
-          "ativoId": {
-            "type": "integer",
-            "format": "int32"
+          "codigoAtivo": {
+            "type": "string",
+            "nullable": true
           },
           "quantidade": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UsuarioCriacaoDto": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string",
+            "nullable": true
           },
-          "precoUnitario": {
-            "type": "number",
-            "format": "double"
+          "email": {
+            "type": "string",
+            "nullable": true
           },
-          "corretagem": {
+          "percentualCorretagem": {
             "type": "number",
             "format": "double"
           }

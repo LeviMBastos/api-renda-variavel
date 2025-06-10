@@ -11,15 +11,18 @@ namespace Investimentos.Infra.Services
         private readonly IOperacaoRepository _operacaoRepository;
         private readonly IUsuarioRepository _usuarioRepository;
         private readonly IPosicaoService _posicaoService;
+        private readonly IAtivoService _ativoService;
 
         public OperacaoService(IOperacaoRepository operacaoRepository, 
-                               IUsuarioRepository usuarioRepository, 
+                               IUsuarioRepository usuarioRepository,
                                
+                               IAtivoService ativoService, 
                                IPosicaoService posicaoService)
         {
             _operacaoRepository = operacaoRepository;
             _usuarioRepository = usuarioRepository;
 
+            _ativoService = ativoService;
             _posicaoService = posicaoService;
         }
 
@@ -28,6 +31,16 @@ namespace Investimentos.Infra.Services
             List<Operacao> operacoesUsuario = await _operacaoRepository.ObterPorUsuarioAsync(usuarioId);
 
             return Map(operacoesUsuario);
+        }
+
+        public async Task<decimal> ObterTotalCorretagemAsync()
+        {
+            return await _operacaoRepository.SomarCorretagensAsync();
+        }
+
+        public async Task<List<UsuarioCorretagemDto>> ObterTop10ClientesPorCorretagemAsync()
+        {
+            return await _operacaoRepository.ObterTop10ClientesPorCorretagemAsync();
         }
 
         public async Task<decimal> CalcularPrecoMedioAsync(int ativoId, int usuarioId)
@@ -59,14 +72,19 @@ namespace Investimentos.Infra.Services
             if (usuario == null)
                 throw new ArgumentException("Usuário não encontrado.");
 
+            AtivoDto? ativo = await _ativoService.ObterUltimaCotacaoAsync(operacaoCompra.CodigoAtivo);
+
+            if (ativo == null)
+                throw new ArgumentException("Ativo não existente.");
+
             var operacao = new Operacao
             {
                 UsuarioId = operacaoCompra.UsuarioId,
-                AtivoId = operacaoCompra.AtivoId,
+                AtivoId = ativo.Id,
                 Quantidade = operacaoCompra.Quantidade,
-                PrecoUnitario = operacaoCompra.PrecoUnitario,
+                PrecoUnitario = ativo.Cotacao.PrecoUnitario,
                 TipoOperacao = "COMPRA",
-                Corretagem = operacaoCompra.Corretagem,
+                Corretagem = usuario.PercentualCorretagem,
                 DataHora = DateTime.Now
             };
 
@@ -74,8 +92,8 @@ namespace Investimentos.Infra.Services
 
             await _posicaoService.AtualizarPosicaoAposCompraAsync(
                 operacaoCompra.UsuarioId,
-                operacaoCompra.AtivoId,
-                operacaoCompra.PrecoUnitario,
+                ativo.Id,
+                ativo.Cotacao.PrecoUnitario,
                 operacaoCompra.Quantidade
             );
         }

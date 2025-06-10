@@ -14,10 +14,27 @@ namespace Investimentos.Infra.Services
             _usuarioRepository = usuarioRepository;
         }
 
+        public async Task<Usuario> CriarAsync(UsuarioCriacaoDto dto)
+        {
+            var usuario = new Usuario
+            {
+                Nome = dto.Nome,
+                Email = dto.Email,
+                PercentualCorretagem = dto.PercentualCorretagem
+            };
+
+            await _usuarioRepository.AdicionarAsync(usuario);
+
+            return usuario;
+        }
+
         public async Task<UsuarioDto?> ObterPorIdAsync(int id)
         {
             var usuario = await _usuarioRepository.ObterPorIdAsync(id);
             
+            if (usuario == null)
+                return null;
+
             return Map(usuario);
         }
 

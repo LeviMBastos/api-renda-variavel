@@ -1,4 +1,5 @@
 ﻿using Investimentos.Domain.Services;
+using Investimentos.Infra.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Investimentos.Api.Controllers
@@ -19,6 +20,20 @@ namespace Investimentos.Api.Controllers
         {
             var operacoes = await _service.ObterOperacoesUsuarioAsync(usuarioId);
             return Ok(operacoes);
+        }
+
+        [HttpGet("getTotalCorretagens")]
+        public async Task<IActionResult> ObterTotalCorretagens()
+        {
+            var total = await _service.ObterTotalCorretagemAsync();
+            return Ok(new { TotalCorretagens = total });
+        }
+
+        [HttpGet("getTop10ClientesPorCorretagemAsync")]
+        public async Task<IActionResult> ObterTop10ClientesPorCorretagem()
+        {
+            var result = await _service.ObterTop10ClientesPorCorretagemAsync();
+            return Ok(result);
         }
     }
 }

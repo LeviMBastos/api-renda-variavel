@@ -1,4 +1,5 @@
-﻿using Investimentos.Domain.Entities;
+﻿using Investimentos.Domain.DTOs;
+using Investimentos.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace Investimentos.Domain.Interfaces
 {
     public interface IPosicaoRepository
     {
+        Task<List<UsuarioPlDto>> ObterTop10ClientesPorPlAsync();
         Task<Posicao?> GetPosicaoAsync(int usuarioId, int ativoId);
         Task AddAsync(Posicao posicao);
         Task UpdateAsync(Posicao posicao);

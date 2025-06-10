@@ -1,4 +1,5 @@
-﻿using Investimentos.Domain.Entities;
+﻿using Investimentos.Domain.DTOs;
+using Investimentos.Domain.Entities;
 using Investimentos.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,6 +21,29 @@ namespace Investimentos.Infra.Repositories
                 .Where(o => o.UsuarioId == usuarioId)
                 .OrderByDescending(o => o.DataHora)
                 .ToListAsync();
+        }
+
+        public async Task<decimal> SomarCorretagensAsync()
+        {
+            return await _context.Operacoes.SumAsync(o => o.Corretagem);
+        }
+
+        public async Task<List<UsuarioCorretagemDto>> ObterTop10ClientesPorCorretagemAsync()
+        {
+            var result = await _context.Operacoes
+                .Include(o => o.Usuario)
+                .GroupBy(o => new { o.UsuarioId, o.Usuario.Nome })
+                .Select(g => new UsuarioCorretagemDto
+                {
+                    UsuarioId = g.Key.UsuarioId,
+                    Nome = g.Key.Nome,
+                    TotalCorretagem = g.Sum(x => x.Corretagem)
+                })
+                .OrderByDescending(x => x.TotalCorretagem)
+                .Take(10)
+                .ToListAsync();
+
+            return result;
         }
 
         public async Task<List<Operacao>?> GetOperacoesDeCompraAsync(int usuarioId, int ativoId)

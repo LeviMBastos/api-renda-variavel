@@ -1,4 +1,5 @@
-﻿using Investimentos.Domain.Entities;
+﻿using Investimentos.Domain.DTOs;
+using Investimentos.Domain.Entities;
 using Investimentos.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -28,6 +29,24 @@ namespace Investimentos.Infra.Repositories
         {
             _context.Posicoes.Update(posicao);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<List<UsuarioPlDto>> ObterTop10ClientesPorPlAsync()
+        {
+            var result = await _context.Posicoes
+                .Include(p => p.Usuario)
+                .GroupBy(p => new { p.UsuarioId, p.Usuario.Nome })
+                .Select(g => new UsuarioPlDto
+                {
+                    UsuarioId = g.Key.UsuarioId,
+                    Nome = g.Key.Nome,
+                    TotalPl = g.Sum(x => x.PL)
+                })
+                .OrderByDescending(x => x.TotalPl)
+                .Take(10)
+                .ToListAsync();
+
+            return result;
         }
     }
 }

@@ -11,7 +11,13 @@ namespace Investimentos.Infra.Repositories
         {
             _context = context;
         }
-    
+
+        public async Task AdicionarAsync(Usuario usuario)
+        {
+            await _context.Usuarios.AddAsync(usuario);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<Usuario?> ObterPorIdAsync(int id)
         {
             return await _context.Usuarios

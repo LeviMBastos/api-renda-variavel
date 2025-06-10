@@ -16,6 +16,7 @@ namespace Investimentos.Infra.Repositories
         public async Task<Ativo?> BuscarPorCodigoAsync(string codigo)
         {
             return await _context.Ativos
+                .Include(a => a.Cotacoes)
                 .FirstOrDefaultAsync(a => a.Codigo == codigo);
         }
 

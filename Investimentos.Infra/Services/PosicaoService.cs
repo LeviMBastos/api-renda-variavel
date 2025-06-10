@@ -1,4 +1,5 @@
-﻿using Investimentos.Domain.Entities;
+﻿using Investimentos.Domain.DTOs;
+using Investimentos.Domain.Entities;
 using Investimentos.Domain.Interfaces;
 using Investimentos.Domain.Services;
 
@@ -7,12 +8,15 @@ namespace Investimentos.Infra.Services
     public class PosicaoService : IPosicaoService
     {
         private readonly IPosicaoRepository _posicaoRepository;
-        private readonly IOperacaoRepository _operacaoRepository;
 
-        public PosicaoService(IPosicaoRepository posicaoRepository, IOperacaoRepository operacaoRepository)
+        public PosicaoService(IPosicaoRepository posicaoRepository)
         {
             _posicaoRepository = posicaoRepository;
-            _operacaoRepository = operacaoRepository;
+        }
+
+        public async Task<List<UsuarioPlDto>> ObterTop10ClientesPorPlAsync()
+        {
+            return await _posicaoRepository.ObterTop10ClientesPorPlAsync();
         }
 
         public async Task AtualizarPosicaoAposCompraAsync(int usuarioId, int ativoId, decimal precoCompra, int qtdCompra)

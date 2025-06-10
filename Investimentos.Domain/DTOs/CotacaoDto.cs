@@ -3,6 +3,7 @@
     public class CotacaoDto
     {
         public int Id { get; set; }
+        public string? CodigoAtivo { get; set; }
         public decimal PrecoUnitario { get; set; }
         public DateTime DataHora { get; set; }
     }
