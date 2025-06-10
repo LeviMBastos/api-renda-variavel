@@ -49,7 +49,7 @@ dotnet run
 
 ### 📦 Modelagem de Banco de Dados (MySQL)
 
-Script de criação: [`script-criacao-tabelas.sql`](criacao_tabelas.sql)
+Script de criação: [`script-criacao-tabelas.sql`](script-criacao-tabelas.sql)
 
 Principais tabelas:
 
