@@ -49,7 +49,7 @@ dotnet run
 
 ### 📦 Modelagem de Banco de Dados (MySQL)
 
-Script de criação: [`/scripts/criacao_tabelas.sql`](scripts/criacao_tabelas.sql)
+Script de criação: [`script-criacao-tabelas.sql`](criacao_tabelas.sql)
 
 Principais tabelas:
 
@@ -177,10 +177,10 @@ Caso o serviço de cotações falhe:
 Investimentos.Api/                         --> API principal
 Investimentos.Domain/                      --> Entidades e regras de domínio
 Investimentos.Infra/                       --> Contexto EF Core, repositórios, serviços
+Investimentos.Tests/                       --> Testes unitários
 Investimentos.WorkerKafkaCotacoesProducer/ --> Produtor de cotações (Kafka)
 Investimentos.WorkerCotacaoConsumer/       --> Worker consumidor de cotações
-Investimentos.Tests/                       --> Testes unitários
-scripts/criacao_tabelas.sql                --> Script de criação do banco
+criacao_tabelas.sql                        --> Script de criação do banco
 ```
 
 ---
