@@ -2,14 +2,17 @@
 
 <div align="center">
 
-[![PT-BR](https://img.shields.io/badge/🇧🇷-PORTUGUÊS-blue?style=for-the-badge&labelColor=1f6feb)](README.md)
-[![EN-US](https://img.shields.io/badge/🇺🇸-ENGLISH-blue?style=for-the-badge&labelColor=1f6feb)](README_EN.md)
+**Escolha o idioma / Choose language:**
+
+[![pt-br](https://img.shields.io/badge/PT--BR-Português-green)](#pt-br) [![en-us](https://img.shields.io/badge/EN--US-English-blue)](#en-us)
 
 </div>
 
 ---
 
-## 🇧🇷 Português (PT-BR)
+<a name="pt-br"></a>
+
+## 🇧🇷 Português (Brazilian Portuguese)
 
 # 💰 Sistema de Controle de Investimentos
 
@@ -342,11 +345,13 @@ criacao_tabelas.sql                        --> Script de criação do banco
 
 ## 📌 Considerações Finais
 
-Este projeto visa cobrir não só os aspectos de desenvolvimento backend com .NET e MySQL, mas também aplicar **conceitos avançados de arquitetura, testes e resiliência**, frequentemente cobrados em entrevistas técnicas e necessários para sistemas em produção.
+Este projeto visa cobrir não só os aspectos de desenvolvimento backend com .NET e MySQL, mas também aplicar **conceitos avançados de arquitetura, testes e resiliência**, frequentemente cobrados em entrevistas técnicas e necessários em ambientes de produção.
 
 ---
 
-## 🇺🇸 English (EN-US)
+<a name="en-us"></a>
+
+## 🇺🇸 English (English)
 
 # 💰 Investment Control System
 
@@ -679,5 +684,12 @@ criacao_tabelas.sql                        --> Database creation script
 
 ## 📌 Final Considerations
 
-This project aims to cover not only backend development aspects with .NET and MySQL, but also apply **advanced concepts of architecture, testing, and resilience**, frequently required in technical interviews and necessary for production systems.
+This project aims to cover not only backend development aspects with .NET and MySQL, but also apply **advanced concepts of architecture, testing, and resilience**, frequently required in technical interviews and necessary in production environments.
 
+---
+
+<div align="center">
+
+[⬆ Back to top](#-investment-control-system--sistema-de-controle-de-investimentos) | [Voltar ao topo](#pt-br)
+
+</div>
